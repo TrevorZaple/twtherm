@@ -5,11 +5,11 @@ Initial Upload Notes:
 
 TWTherm is a web app that has the following workflow:
 
-1. Scrapes Twitter using an R script:
-  1a. Trending topics are retrieved from Twitter.
-  1b. Tweets are collected for each topic (300 each currently).
-  1c. Tweets are saved to a csv file.
-  1d. The csv file is uploaded to a MongoDB collection.
+1. Scrapes Twitter using an R script:  
+  1a. Trending topics are retrieved from Twitter.  
+  1b. Tweets are collected for each topic (300 each currently).  
+  1c. Tweets are saved to a csv file.  
+  1d. The csv file is uploaded to a MongoDB collection.  
   
  (Currently the automated nature of step 1 is handled by Windows Task Scheduler, running an Rscript.exe (for the R script) and a batch file (for the Mongo import). These competences will be transferred more "in-app" in future iterations).
  
@@ -21,8 +21,9 @@ TWTherm is a web app that has the following workflow:
  
  Lots.
  
- It works but it's clunky. 
- -Automate the scrape/dictionary/import function within the app itself instead of relying on system task scheduling.
- -Improve the overall look of the app; this uses Emotion for its css functions so it's pretty much just a matter of getting better at designing with Emotion.
- -Add a button beside each bubble that takes the user to the Twitter page for that trending topic, labelled something like "What is this?"
- -The header ("Today's forecast: ") is eventually going to have a line that changes depending on the overall sentiment of the ten topics. The R script currently collects this information but I've been trying to change the state.line on an if/else basis in React and haven't managed to quite get it down.
+ It works but it's clunky.   
+ -Automate the scrape/dictionary/import function within the app itself instead of relying on system task scheduling.  
+ -Improve the overall look of the app; this uses Emotion for its css functions so it's pretty much just a matter of getting better at designing with Emotion.  
+ -Add a button beside each bubble that takes the user to the Twitter page for that trending topic, labelled something like "What is this?"  
+ ~~The header ("Today's forecast: ") is eventually going to have a line that changes depending on the overall sentiment of the ten topics. The R script currently collects this information but I've been trying to change the state.line on an if/else basis in React and haven't managed to quite get it down.~~    
+-The header now displays a sun or a storm depending on the overall sentiment of the trending topics. Eventually these little logos will be something better, right now they're just clipart. 
