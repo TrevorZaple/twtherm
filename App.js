@@ -2,11 +2,8 @@
 import React, { Component } from 'react';
 import { jsx } from '@emotion/core';
 import axios from 'axios';
-//import GetData from './getData'
-//import getElementById from './GetElementById';
-//const data1 = new GetData();
-//import getElementById from './server';
-//const getTopicById = require('./server');
+import sun from './sun.jpg';
+import storm from './storm.png';
 
 class GetData extends Component {
   constructor() {
@@ -87,24 +84,9 @@ class Forecast extends Component {
         //id: res.data.id,
         //topic: dat.topic,
         sentiment: res.data[0].sentiment,
-        line: () => {
-          const sen = this.state.sentiment;
-          if(sen >= 0.5) {
-            this.setState({line: "SUNNY"});
-          } else if(sen >= 0) {
-            this.setState({line: "PARTLY SUNNY"});
-          } else if(sen >= -0.5) {
-            this.setState({line: "PARTLY CLOUDY"});
-          } else if(sen >= -1) {
-            this.setState({line: "OVERCAST"});
-          } else if(sen >= -1.5) {
-            this.setState({line: "STORMY"});
-          } else {
-            this.setState({line: "Error: Could not evaluate forecast"});
-          }}
-          //return this.state.line;
 
-      });
+
+      })
 
 
     }).then(console.log(this.state.line));
@@ -116,14 +98,15 @@ class Forecast extends Component {
 
     return(
       <React.Fragment>
-      <div className = 'headerForecast'
-      css = {{
-        background: '#5246a0',
+      <div className = 'headerForecast'>
+      <div css = {{
+
         height: 60,
-        width: 400,
-        marginTop: 0,
+        width: 160,
+        marginTop: -43,
+        marginLeft: 480,
         fontFamily: 'Impact, serif',
-        fontSize: 24,
+        fontSize: 48,
         display: 'flex',
         flexDirection: 'row',
         color: '#ffffff',
@@ -132,7 +115,15 @@ class Forecast extends Component {
         textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000'
       }}>
 
-      <div>{data.map(data => <div>{data.line}</div>)}</div>
+      <div css = {{
+        textAlign: 'center'
+      }}>
+      {this.state.sentiment < 0 ? <img css = {{
+        height: 90,
+        width: 90
+      }} src={storm} alt = "storm"/> : <img src={sun} alt = "sun" />}
+      </div>
+      </div>
       </div>
       </React.Fragment>
     )
@@ -151,10 +142,9 @@ function App() {
       <header className="App-header"
       css = {{
         background: '#5246a0',
-        height: 60,
-        
+        height: 90,
         fontFamily: 'Impact, serif',
-        fontSize: 24,
+        fontSize: 36,
         color: '#ffffff',
         display: 'flex',
         flexDirection: 'row',
@@ -162,9 +152,11 @@ function App() {
         textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000'
       }}>
 
-        <p>
+        <div>
           Today's Social Media Forecast:
-        </p>
+          <Forecast />
+
+        </div>
 
 
 
