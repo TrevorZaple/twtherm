@@ -121,7 +121,10 @@ class Forecast extends Component {
       {this.state.sentiment < 0 ? <img css = {{
         height: 90,
         width: 90
-      }} src={storm} alt = "storm"/> : <img src={sun} alt = "sun" />}
+      }} src={storm} alt = "storm"/> : <img css = {{
+        height: 90,
+        width: 90
+      }} src={sun} alt = "sun" />}
       </div>
       </div>
       </div>
